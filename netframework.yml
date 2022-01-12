@@ -1,0 +1,12 @@
+- hosts: '*'
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  connection: labvix
+  gather_facts: 'no'
+  tasks:
+    - name: Install .NET-Framework 4.8
+      ansible.windows.win_package:
+        path: 'https://go.microsoft.com/fwlink/?linkid=2088631'
+      dest: 'C:\Users\Administrador\AppData\Local\Temp'
+      state: present
+      arguments: /install /passive /norestart
