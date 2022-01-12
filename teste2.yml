@@ -1,0 +1,23 @@
+- hosts: '*'
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  connection: labvix
+  gather_facts: 'no'
+  tasks:
+    - name: Download Microsoft .NET Framework 4.8
+      win_get_url:
+        dest: 'C:\Users\Administrador\AppData\Local\Temp'
+        url: 'https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-offline-installer'
+    - name: Unzip Microsoft .NET Framework 4.8 installer
+      win_unzip:
+        dest: 'C:\Users\Administrador\AppData\Local\Temp'
+        rm: true
+        src: 'C:\Users\Administrador\AppData\Local\Temp\dotnet461.zip'
+    - name: Run Microsoft .NET Framework 4.8 installer
+      raw: >-
+        C:\Users\Administrador\AppData\Local\Temp\Setup.exe /q /norestart /log
+        C:\Users\Administrador\AppData\Local\Temp\dotnet\dotnet461\log.txt /x86
+        /x64 /redist
+      register: dotnet_install
+    - name: Reboot as required by Microsoft .NET Framework 4.6.1 installer
+      win_reboot: null
