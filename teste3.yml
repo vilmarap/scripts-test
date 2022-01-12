@@ -1,0 +1,12 @@
+- hosts: '*'
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  connection: labvix
+  gather_facts: 'no'
+  tasks:
+    - name: Download Microsoft .NET Framework 4.8
+      win_get_url:
+        dest: 'C:\Users\Administrador\Downloads'
+        url: >-
+          https://download.visualstudio.microsoft.com/download/pr/2d6bb6b2-226a-4baa-bdec-798822606ff1/8494001c276a4b96804cde7829c04d7f/ndp48-x86-x64-allos-enu.exe
+    - win_command: C:\Users\Administrador\Downloads\ndp48-x86-x64-allos-enu.exe /install /passive /q /norestart /SkipMSUInstall
