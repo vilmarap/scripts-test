@@ -1,6 +1,6 @@
 - hosts: '*'
   vars:
-    ansible_python_interpreter: /usr/bin/python3
+    ansible_python_interpreter: /usr/bin/python3.8
   connection: labvix
   gather_facts: 'no'
   tasks:
@@ -8,7 +8,7 @@
       win_get_url:
         dest: 'C:\Users\Administrador\Downloads'
         url: >-
-          https://download.newrelic.com/infrastructure_agent/windows/newrelic-infra.msi
+          https://download.newrelic.com/dot_net_agent/latest_release/NewRelicDotNetAgent_x64.msi
     - name: Install agent
       win_package:
         path: 'C:\Users\Administrador\Downloads\newrelic-infra.msi'
