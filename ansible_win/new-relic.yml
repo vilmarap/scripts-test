@@ -9,7 +9,7 @@
         dest: 'C:\Users\Administrador\Downloads'
         url: >-
           https://download.newrelic.com/infrastructure_agent/windows/newrelic-infra.msi
-    - win_package:
-    	path: C:\Users\Administrador\Downloads\newrelic-infra.msi
-    	state: present
-      
+    - name: Install agent
+      win_package:
+        path: 'C:\Users\Administrador\Downloads\newrelic-infra.msi'
+        state: present
