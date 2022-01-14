@@ -1,0 +1,15 @@
+- hosts: '*'
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  connection: labvix
+  gather_facts: 'no'
+  tasks:
+    - name: Download Newrelic-infra agent
+      win_get_url:
+        dest: 'C:\Users\Administrador\Downloads'
+        url: >-
+          https://download.newrelic.com/infrastructure_agent/windows/newrelic-infra.msi
+    - win_package:
+    	path: C:\Users\Administrador\Downloads\newrelic-infra.msi
+    	state: present
+      
