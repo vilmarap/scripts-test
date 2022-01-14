@@ -1,0 +1,14 @@
+- hosts: '*'
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  connection: labvix
+  gather_facts: 'no'
+  tasks:
+    - name: Search and download Windows updates without installing them
+      win_updates:
+        state: downloaded
+    - name: Install all security updates with automatic reboots
+      win_updates:
+        category_names:
+          - SecurityUpdates
+        reboot: 'yes'
