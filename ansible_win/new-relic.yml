@@ -10,6 +10,5 @@
         url: >-
           https://download.newrelic.com/dot_net_agent/latest_release/NewRelicDotNetAgent_x64.msi
     - name: Install agent
-      win_package:
-        path: 'C:\Users\Administrador\Downloads\newrelic-infra.msi'
+      win_command: NewRelicDotNetAgent_x64.msi /i C:\Users\Administrador\Downloads\newrelic-infra.msi /qb NR_LICENSE_KEY=YOUR_LICENSE_KEY INSTALLLEVEL=1
         state: present
